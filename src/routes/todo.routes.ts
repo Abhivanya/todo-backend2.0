@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createTodo,
+  deleteTodoById,
   getAllTodo,
   getTodoById,
   updateTodoById,
@@ -23,4 +24,5 @@ router.put(
   requestValidator(updateTodoSchema),
   updateTodoById
 );
+router.delete("/:id", requestValidator(todoIdSchema, "params"), deleteTodoById);
 export default router;
