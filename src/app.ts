@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import connectDB from "./util/connectDB.js";
+import todoRoutes from "./routes/todo.routes.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -18,6 +19,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
+
+// routes
+app.use("/api", todoRoutes);
 
 const startServer = async () => {
   try {
