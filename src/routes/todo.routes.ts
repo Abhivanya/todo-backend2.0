@@ -3,6 +3,6 @@ import { getAllTodo } from "../controllers/todo.controller.js";
 
 const router = Router();
 
-router.get("/todo", getAllTodo);
+router.get("/", getAllTodo);
 
 export default router;

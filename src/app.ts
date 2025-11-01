@@ -1,9 +1,10 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import connectDB from "./util/connectDB.js";
 import todoRoutes from "./routes/todo.routes.js";
+import errorHandler from "./middelware/error.middelware.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -21,7 +22,18 @@ app.get("/", (req, res) => {
 });
 
 // routes
-app.use("/api", todoRoutes);
+app.use("/api/todo", todoRoutes);
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(404).json({
+    success: false,
+    data: null,
+    message: "Route not found",
+  });
+});
+
+// Error handling middleware
+app.use(errorHandler);
 
 const startServer = async () => {
   try {

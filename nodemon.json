@@ -1,0 +1,9 @@
+{
+  "watch": ["src", ".env"],
+  "ext": "ts,js,json,env",
+  "ignore": ["node_modules"],
+  "exec": "node --loader ts-node/esm --experimental-specifier-resolution=node --no-warnings ./src/app.ts",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
